@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React , {useEffect, useState} from 'react';
 import './App.css';
+import InputFeild from './components/InputFeild';
+import { Todo } from './models/Todo';
+import TodoList from './components/TodoList';
 
-function App() {
+
+// this is function componenet 
+const App :React.FC =() =>{
+  const [todo , setTodo] =useState<string>("");
+  const [todos , setTodos]=useState<Todo[]>([]);
+
+  useEffect(() => {
+    console.log(todos);
+  }, [todos]);
+  
+  const handleAdd = (e:React.FormEvent) => {
+      e.preventDefault();
+      if(todo){
+        setTodos([...todos,{id:Date.now(), todo ,isDone:false}]);
+        setTodo("");
+      }
+  };
+
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+        <span className="title" > Task Management </span>
+        <InputFeild todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
+        <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 }
