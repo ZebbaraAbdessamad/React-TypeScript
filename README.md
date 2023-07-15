@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+<img src="Tasks-image.PNG" alt="Image description" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+
 ## Available Scripts
 
 In the project directory, you can run:
